@@ -15,8 +15,9 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
-//	@PostMapping
-//	public ResponseEntity<ResponseStructure<String>> sendMail(){
-//		
-//	}
+	
+	@PostMapping
+	public ResponseEntity<ResponseStructure<String>> sendMail(){
+		
+	}
 }
