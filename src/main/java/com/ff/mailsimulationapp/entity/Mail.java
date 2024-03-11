@@ -19,12 +19,12 @@ import lombok.Data;
 public class Mail {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy =GenerationType.AUTO)
 	private int id;
 	
 	@OneToOne
 	private User fromUser;
-	
+	 
 	@OneToMany
 	private List<User> toUsers;
 	
