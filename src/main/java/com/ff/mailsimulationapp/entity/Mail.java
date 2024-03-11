@@ -12,6 +12,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 @Entity
@@ -28,11 +30,12 @@ public class Mail {
 	@OneToMany
 	private List<User> toUsers;
 	
-	
+	@NotNull
+	@Size(max = 30)
 	private String subject;
-	private String message;
+	private String message="";
 	
 	@Enumerated(EnumType.STRING)
-	private MailStatus status;
+	private MailStatus status; 
 	
 }
