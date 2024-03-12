@@ -33,4 +33,9 @@ public class UserDao {
 	public User getUserByEmail(String email) {
 		return userRepository.findByEmail(email);
 	}
+
+	public User findByVerificationToken(String verificationToken) {
+		// TODO Auto-generated method stub
+		return userRepository.findByVerificationToken(verificationToken);
+	}
 }
