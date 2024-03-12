@@ -14,8 +14,8 @@ public class ApplicationExceptionHandler {
 	public ResponseEntity<ResponseStructure<String>> catchMailFailedException(MailFailedToSentException exception) {
 		ResponseStructure<String> structure =new ResponseStructure<String>();
 		structure.setStatusCode(HttpStatus.BAD_REQUEST.value());
-		structure.setMessage(HttpStatus.BAD_REQUEST.getReasonPhrase());
-		structure.setData("Selected User Not Found");
+		structure.setMessage("BAD REQUEST");
+		structure.setData(exception.getMessage());
 		
 		return new ResponseEntity<ResponseStructure<String>>(structure,HttpStatus.BAD_REQUEST);
 	}
