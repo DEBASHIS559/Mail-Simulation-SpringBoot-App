@@ -1,7 +1,9 @@
 package com.ff.mailsimulationapp.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.ff.mailsimulationapp.util.MailStatus;
 
 import jakarta.persistence.Entity;
@@ -24,11 +26,13 @@ public class Mail {
 	@GeneratedValue(strategy =GenerationType.AUTO)
 	private int id;
 	
+	
 	@OneToOne
 	private User fromUser;
 	 
+	@JsonIgnore
 	@OneToMany
-	private List<User> toUsers;
+	private List<User> toUsers=new ArrayList<User>();
 	
 	@NotNull
 	@Size(max = 30)
