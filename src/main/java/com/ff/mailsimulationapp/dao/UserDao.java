@@ -1,8 +1,6 @@
 package com.ff.mailsimulationapp.dao;
 
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -33,7 +31,6 @@ public class UserDao {
 	}
 
 	public User getUserByEmail(String email) {
-		// TODO Auto-generated method stub
 		return userRepository.findByEmail(email);
 	}
 }
