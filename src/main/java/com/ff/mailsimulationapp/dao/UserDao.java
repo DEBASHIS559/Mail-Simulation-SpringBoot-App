@@ -34,4 +34,9 @@ public class UserDao {
 
 	
 	}
+
+	public User getUserByEmail(String email) {
+		// TODO Auto-generated method stub
+		return userRepository.findByEmail(email);
+	}
 }
