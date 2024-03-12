@@ -10,6 +10,7 @@ import com.ff.mailsimulationapp.repository.MailRepository;
 
 @Repository
 public class MailDao {
+
 	
 	@Autowired
 	private MailRepository mailRepository;
