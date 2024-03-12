@@ -22,13 +22,13 @@ public class AppConfiguration {
 		localhost.setDescription("Development environment");
 
 		Contact contact = new Contact();
-		contact.setEmail("email@domain.in");
-		contact.setName("Application Name");
-		contact.setUrl("https://domain name");
+		contact.setEmail("ziya@domain.in");
+		contact.setName("Mail Simulation App");
+		contact.setUrl("https://mailsimulation.in");
 
 		License mitLicense = new License().name("MIT License").url("https://choosealicense.com/licenses/mit/");
 
-		Info info = new Info().title("ApplicationName RESTful Web Service documentation").version("1.0").contact(contact)
+		Info info = new Info().title("Mail simulation RESTful Web Service documentation").version("1.0").contact(contact)
 				.description("This API exposes endpoints to manage Application.")
 				.termsOfService("https://domainname/terms").license(mitLicense);
 

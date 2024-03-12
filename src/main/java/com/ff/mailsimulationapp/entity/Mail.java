@@ -32,6 +32,7 @@ public class Mail {
 	 
 	@JsonIgnore
 	@ManyToMany
+	
 	private List<User> toUsers=new ArrayList<User>();
 	
 	@NotNull
