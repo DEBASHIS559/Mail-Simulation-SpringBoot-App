@@ -12,8 +12,8 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
@@ -27,11 +27,11 @@ public class Mail {
 	private int id;
 	
 	
-	@OneToOne
+	@ManyToOne
 	private User fromUser;
 	 
 	@JsonIgnore
-	@OneToMany
+	@ManyToMany
 	private List<User> toUsers=new ArrayList<User>();
 	
 	@NotNull
