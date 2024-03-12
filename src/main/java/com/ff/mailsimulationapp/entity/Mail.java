@@ -30,7 +30,7 @@ public class Mail {
 	@ManyToOne
 	private User fromUser;
 	 
-	@JsonIgnore
+	
 	@ManyToMany
 	private List<User> toUsers=new ArrayList<User>();
 	
