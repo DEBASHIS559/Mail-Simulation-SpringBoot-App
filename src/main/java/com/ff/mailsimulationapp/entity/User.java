@@ -29,4 +29,13 @@ public class User {
 	@Column(nullable = false)
 	private String password;
 	
+	private String verificationToken;
+	private String question;
+	
+	private String answer;
+	
+	private boolean isVerified;
+	
+	private String recoveryEmail;
+
 }

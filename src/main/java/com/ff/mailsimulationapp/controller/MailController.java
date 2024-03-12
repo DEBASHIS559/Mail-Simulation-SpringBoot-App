@@ -12,11 +12,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ff.mailsimulationapp.dto.MailDto;
 import com.ff.mailsimulationapp.dto.InboxResponse;
+import com.ff.mailsimulationapp.dto.MailDto;
 import com.ff.mailsimulationapp.dto.ResponseStructure;
 import com.ff.mailsimulationapp.dto.SentItemsResponse;
-import com.ff.mailsimulationapp.entity.Mail;
 import com.ff.mailsimulationapp.service.MailService;
 
 import jakarta.validation.Valid;
@@ -48,7 +47,7 @@ public class MailController {
 
 	// this method is for showing draft mails of perticular user
 	@GetMapping("/view-draft/{email}")
-	public ResponseEntity<ResponseStructure<List<Mail>>> viewDraftItem(@PathVariable String email) {
+	public ResponseEntity<ResponseStructure<List<InboxResponse>>> viewDraftItem(@PathVariable String email) {
 		return mailService.viewDraftItem(email);
 	}
 

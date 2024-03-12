@@ -3,7 +3,6 @@ package com.ff.mailsimulationapp.entity;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.ff.mailsimulationapp.util.MailStatus;
 
 import jakarta.persistence.Entity;
