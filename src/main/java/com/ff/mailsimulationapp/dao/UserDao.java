@@ -1,16 +1,17 @@
 package com.ff.mailsimulationapp.dao;
 
+
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
 
 import com.ff.mailsimulationapp.entity.User;
 import com.ff.mailsimulationapp.repository.UserRepository;
 
 @Repository
 public class UserDao {
+
 
 	@Autowired
 	private UserRepository userRepository;
@@ -30,5 +31,7 @@ public class UserDao {
 			return user.get();
 		}
 		return null;
+
+	
 	}
 }

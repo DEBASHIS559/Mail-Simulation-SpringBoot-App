@@ -7,5 +7,9 @@ import com.ff.mailsimulationapp.entity.User;
 
 public interface UserRepository extends JpaRepository<User, Integer>{
 
+
 	 User findByEmailAndPassword(String email, String password);
+
+	
+	public User findByEmail(String email);
 }
