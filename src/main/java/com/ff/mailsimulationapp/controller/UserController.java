@@ -31,7 +31,5 @@ public class UserController {
 	ResponseEntity<ResponseStructure<User>> login(@Valid @RequestParam String email, @Valid @RequestParam String password) {
 		return userService.login(email, password);
 	}
-	
-
 
 }
