@@ -1,5 +1,6 @@
 package com.ff.mailsimulationapp.entity;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -24,9 +25,9 @@ public class User {
 	@Column(unique = true)
 	private String  email;
 	
+	@Schema(hidden = true)
 	@Column(nullable = false)
 	private String password;
-	
 	
 	private String verificationToken;
 	private String question;
@@ -36,4 +37,5 @@ public class User {
 	private boolean isVerified;
 	
 	private String recoveryEmail;
+
 }

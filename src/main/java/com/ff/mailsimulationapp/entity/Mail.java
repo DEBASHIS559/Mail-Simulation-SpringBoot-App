@@ -3,7 +3,6 @@ package com.ff.mailsimulationapp.entity;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.ff.mailsimulationapp.util.MailStatus;
 
 import jakarta.persistence.Entity;
@@ -30,7 +29,7 @@ public class Mail {
 	@ManyToOne
 	private User fromUser;
 	 
-	@JsonIgnore
+	
 	@ManyToMany
 	private List<User> toUsers=new ArrayList<User>();
 	
