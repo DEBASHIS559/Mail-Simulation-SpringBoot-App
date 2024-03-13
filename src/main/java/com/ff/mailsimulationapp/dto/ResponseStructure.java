@@ -1,5 +1,16 @@
 package com.ff.mailsimulationapp.dto;
 
-public class ResponseStructure<T> {
+
+import lombok.Data;
+
+@Data
+public class ResponseStructure<T> { 
+	
+	int statusCode;
+	
+	String message;
+	
+	T data;
+
 
 }

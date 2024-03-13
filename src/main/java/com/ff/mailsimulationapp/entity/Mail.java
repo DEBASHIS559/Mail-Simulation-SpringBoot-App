@@ -1,5 +1,6 @@
 package com.ff.mailsimulationapp.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.ff.mailsimulationapp.util.MailStatus;
@@ -10,8 +11,10 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 @Entity
@@ -22,17 +25,18 @@ public class Mail {
 	@GeneratedValue(strategy =GenerationType.AUTO)
 	private int id;
 	
-	@OneToOne
+	@ManyToOne
 	private User fromUser;
 	 
-	@OneToMany
-	private List<User> toUsers;
+	@ManyToMany
 	
+	private List<User> toUsers=new ArrayList<User>();
 	
+	@NotNull
+	@Size(max = 30)
 	private String subject;
-	private String message;
+	private String message="";
 	
 	@Enumerated(EnumType.STRING)
-	private MailStatus status;
-	
+	private MailStatus status; 
 }
