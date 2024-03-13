@@ -1,6 +1,5 @@
 package com.ff.mailsimulationapp.controller;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,7 +18,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 
-
 @RestController
 @RequestMapping("/user")
 public class UserController {
@@ -29,28 +27,28 @@ public class UserController {
 
 	@PostMapping("/register")
 	public ResponseEntity<ResponseStructure<User>> saveUser(@Valid @RequestBody User user) {
-		
+
 		return userService.createUser(user);
 	}
-	
+
 	@PostMapping("/login")
-	ResponseEntity<ResponseStructure<User>> login(@Valid @RequestParam String email, @Valid @RequestParam String password, HttpServletRequest request) {
+	ResponseEntity<ResponseStructure<User>> login(@Valid @RequestParam String email,
+			@Valid @RequestParam String password, HttpServletRequest request) {
 		return userService.login(email, password, request);
 	}
-	
+
 	@PostMapping("/logout")
 	public ResponseEntity<String> logout(HttpServletRequest request, HttpServletResponse response) {
-		
-		
+
 		HttpSession session = request.getSession(false);
-		if(session != null) {
-			
+		if (session != null) {
+
 			session.invalidate();
 			return ResponseEntity.ok("Logout successful");
-			
+
 		}
 
-	    throw new MailFailedToSentException("Login first!");
+		throw new MailFailedToSentException("Login first!");
 	}
 
 }
