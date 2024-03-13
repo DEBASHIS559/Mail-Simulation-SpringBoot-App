@@ -24,20 +24,20 @@ public class MailDao {
 	public List<Mail> getMailByToUser(int touserid) {
 
 		List<Mail> toUserlist = mailRepository.findAllByUserInToUsersId(touserid);
-		
+
 		return toUserlist;
 	}
-	
+
 	public Mail getMailById(int mailid) {
 		return mailRepository.findById(mailid).orElse(null);
 	}
-	
-	public List<Mail> getMailByFromUser(User fromuser,MailStatus status){
-		List<Mail> fromUserlist = mailRepository.findByFromUserAndStatus(fromuser,status);
+
+	public List<Mail> getMailByFromUser(User fromuser, MailStatus status) {
+		List<Mail> fromUserlist = mailRepository.findByFromUserAndStatus(fromuser, status);
 		return fromUserlist;
 	}
-	
-	public Mail getMail(User fromuser,MailStatus status,int mailid) {
+
+	public Mail getMail(User fromuser, MailStatus status, int mailid) {
 		return mailRepository.findByFromUserAndStatusAndId(fromuser, status, mailid).orElse(null);
 	}
 

@@ -25,11 +25,9 @@ public class Mail {
 	@GeneratedValue(strategy =GenerationType.AUTO)
 	private int id;
 	
-	
 	@ManyToOne
 	private User fromUser;
 	 
-	
 	@ManyToMany
 	
 	private List<User> toUsers=new ArrayList<User>();
@@ -41,5 +39,4 @@ public class Mail {
 	
 	@Enumerated(EnumType.STRING)
 	private MailStatus status; 
-	
 }

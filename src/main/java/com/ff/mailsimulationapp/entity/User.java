@@ -13,29 +13,29 @@ import lombok.Data;
 @Entity
 @Table(name = "users")
 public class User {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	@Column(nullable = false)
 	private String userName;
-	
-	
+
 	@Column(unique = true)
-	private String  email;
-	
+	private String email;
+
 	@Schema(hidden = true)
 	@Column(nullable = false)
 	private String password;
-	
+
 	private String verificationToken;
+
 	private String question;
-	
+
 	private String answer;
-	
+
 	private boolean isVerified;
-	
+
 	private String recoveryEmail;
 
 }
