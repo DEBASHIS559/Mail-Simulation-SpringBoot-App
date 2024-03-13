@@ -13,9 +13,14 @@ import com.ff.mailsimulationapp.entity.User;
 import com.ff.mailsimulationapp.exception.MailFailedToSentException;
 import com.ff.mailsimulationapp.service.UserService;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+
 import jakarta.validation.Valid;
 
 @RestController
@@ -25,14 +30,21 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 
+	@Operation(description = "To create an user", summary = "user will be saved in database")
+	@ApiResponses(value = { @ApiResponse(description = "user created successfully", responseCode = "201"),
+			@ApiResponse(description = "user not created", responseCode = "401") })
+
 	@PostMapping("/register")
 	public ResponseEntity<ResponseStructure<User>> saveUser(@Valid @RequestBody User user) {
 
 		return userService.createUser(user);
 	}
 
+	@Operation(description = "To login")
+	@ApiResponses(value = { @ApiResponse(description = "user logged in successfully", responseCode = "201"),
+			@ApiResponse(description = "user not authorized to login", responseCode = "401") })
 	@PostMapping("/login")
-	ResponseEntity<ResponseStructure<User>> login(@Valid @RequestParam String email,
+	public ResponseEntity<ResponseStructure<User>> login(@Valid @RequestParam String email,
 			@Valid @RequestParam String password, HttpServletRequest request) {
 		return userService.login(email, password, request);
 	}

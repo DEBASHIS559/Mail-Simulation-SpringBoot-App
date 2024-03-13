@@ -29,6 +29,7 @@ public class Mail {
 	private User fromUser;
 	 
 	@ManyToMany
+	
 	private List<User> toUsers=new ArrayList<User>();
 	
 	@NotNull
