@@ -28,7 +28,6 @@ public class MailService {
 	@Autowired
 	private UserDao userDao;
 
-
 	@Autowired
 	private EmailSenderService mailSenderService;
 
@@ -38,7 +37,6 @@ public class MailService {
 
 		User fromUser = userDao.getUserByEmail(mailDto.getFromUser());
 		mail.setFromUser(fromUser);
-
 
 		if (mailDto.getStatus().equals(MailStatus.SENT)) {
 
@@ -81,13 +79,12 @@ public class MailService {
 		return new ResponseEntity<ResponseStructure<String>>(structure, HttpStatus.CREATED);
 	}
 
-
 	public ResponseEntity<ResponseStructure<List<InboxResponse>>> viewInbox(String email) {
 
 		User toUser = userDao.getUserByEmail(email);
 
 		List<Mail> inbox = mailDao.getMailByToUser(toUser.getId());
-		
+
 		List<InboxResponse> inboxes = new ArrayList<InboxResponse>();
 
 		for (Mail mail : inbox) {
@@ -111,7 +108,6 @@ public class MailService {
 
 		return new ResponseEntity<ResponseStructure<List<InboxResponse>>>(structure, HttpStatus.FOUND);
 	}
-		
 
 	public ResponseEntity<ResponseStructure<List<Mail>>> deleteMailsbyid(List<Integer> mailids) {
 
@@ -129,8 +125,6 @@ public class MailService {
 
 		return new ResponseEntity<ResponseStructure<List<Mail>>>(structure, HttpStatus.ACCEPTED);
 	}
-
-		
 
 	public ResponseEntity<ResponseStructure<List<SentItemsResponse>>> viewSentItem(String email) {
 		User fromUser = userDao.getUserByEmail(email);
