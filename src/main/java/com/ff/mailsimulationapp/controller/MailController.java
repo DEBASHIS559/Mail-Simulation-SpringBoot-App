@@ -22,7 +22,6 @@ import com.ff.mailsimulationapp.service.MailService;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.validation.Valid;
@@ -36,32 +35,43 @@ public class MailController {
 
 	@Operation(description = "To send email", summary = "mail will be saved in database")
 	@ApiResponses(value = { @ApiResponse(description = "mail sent successfully", responseCode = "201"),
-			@ApiResponse(description = "mail not sent", responseCode = "403", content = @Content) })
+			@ApiResponse(description = "unauthorized", responseCode = "401", content = @Content) })
 	@PostMapping("/send-mail")
 	public ResponseEntity<ResponseStructure<String>> sendMail(@Valid @RequestBody MailDto mailDto) {
 		return mailService.sendMail(mailDto);
 	}
 
-	@Operation(description = "To view email", summary = "mail will be fetched")
+	@Operation(description = "To view inbox", summary = "inbox will be fetched")
 	@ApiResponses(value = { @ApiResponse(description = "mail fetched successfully", responseCode = "200"),
-			@ApiResponse(description = "mail not fetched", responseCode = "403", content = @Content) })
+			@ApiResponse(description = "unauthorized", responseCode = "401", content = @Content) })
 	@GetMapping("/inbox/{email}")
 	public ResponseEntity<ResponseStructure<List<InboxResponse>>> viewInbox(@PathVariable String email) {
 		return mailService.viewInbox(email);
 	}
 
-	// this method is for showing sent items of perticular user
+
+	@Operation(description = "To view sent items", summary = "sent items will be fetched")
+	@ApiResponses(value = { @ApiResponse(description = "sent items fetched successfully", responseCode = "200"),
+			@ApiResponse(description = "unauthorized", responseCode = "401", content = @Content) })
 	@GetMapping("/sent/{email}")
 	public ResponseEntity<ResponseStructure<List<SentItemsResponse>>> viewSentItem(@PathVariable String email) {
 		return mailService.viewSentItem(email);
 	}
 
 	// this method is for showing draft mails of perticular user
+
+	@Operation(description = "To view drafts", summary = "drafts will be fetched")
+	@ApiResponses(value = { @ApiResponse(description = "drafts fetched successfully", responseCode = "200"),
+			@ApiResponse(description = "unauthorized", responseCode = "401", content = @Content) })
 	@GetMapping("/view-draft/{email}")
 	public ResponseEntity<ResponseStructure<List<InboxResponse>>> viewDraftItem(@PathVariable String email) {
 		return mailService.viewDraftItem(email);
 	}
 
+
+	@Operation(description = "To update draft mail", summary = "drafts will be edited and sent to the user")
+	@ApiResponses(value = { @ApiResponse(description = "drafts edited successfully", responseCode = "200"),
+			@ApiResponse(description = "unauthorized", responseCode = "401", content = @Content) })
 	@PutMapping("/send-draft/{email}/{mailid}")
 	public ResponseEntity<ResponseStructure<String>> editDraftMail(@PathVariable String email, @PathVariable int mailid,
 			@RequestBody MailDto mailDto) {
@@ -70,7 +80,7 @@ public class MailController {
 
 	@Operation(description = "To delete an email", summary = "mail will be deleted")
 	@ApiResponses(value = { @ApiResponse(description = "mail deleted successfully", responseCode = "200"),
-			@ApiResponse(description = "mail not deleted", responseCode = "403", content = @Content) })
+			@ApiResponse(description = "unauthorized", responseCode = "401", content = @Content) })
 	@DeleteMapping("/delete")
 	public ResponseEntity<ResponseStructure<List<Mail>>> deletemails(@Valid @RequestBody List<Integer> mailids) {
 
