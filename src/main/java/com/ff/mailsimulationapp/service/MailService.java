@@ -80,6 +80,7 @@ public class MailService {
 	}
 
 	public ResponseEntity<ResponseStructure<List<InboxResponse>>> viewInbox(String email) {
+
 		User toUser = userDao.getUserByEmail(email);
 
 		List<Mail> inbox = mailDao.getMailByToUser(toUser.getId());
@@ -106,6 +107,23 @@ public class MailService {
 		structure.setStatusCode(HttpStatus.FOUND.value());
 
 		return new ResponseEntity<ResponseStructure<List<InboxResponse>>>(structure, HttpStatus.FOUND);
+	}
+
+	public ResponseEntity<ResponseStructure<List<Mail>>> deleteMailsbyid(List<Integer> mailids) {
+
+		for (Integer i : mailids) {
+			Mail m = mailDao.getMailbyid(i);
+			m.setToUsers(null);
+
+			mailDao.deleteMailsById(m);
+		}
+
+		ResponseStructure<List<Mail>> structure = new ResponseStructure<List<Mail>>();
+		structure.setData(null);
+		structure.setMessage("Successfully deleted");
+		structure.setStatusCode(HttpStatus.ACCEPTED.value());
+
+		return new ResponseEntity<ResponseStructure<List<Mail>>>(structure, HttpStatus.ACCEPTED);
 	}
 
 	public ResponseEntity<ResponseStructure<List<SentItemsResponse>>> viewSentItem(String email) {
