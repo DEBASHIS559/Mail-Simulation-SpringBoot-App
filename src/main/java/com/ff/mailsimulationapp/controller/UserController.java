@@ -14,6 +14,7 @@ import com.ff.mailsimulationapp.exception.MailFailedToSentException;
 import com.ff.mailsimulationapp.service.UserService;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 
@@ -40,15 +41,22 @@ public class UserController {
 		return userService.createUser(user);
 	}
 
-	@Operation(description = "To login")
+	
+	@Operation(description = "To login", summary = "to login")
 	@ApiResponses(value = { @ApiResponse(description = "user logged in successfully", responseCode = "201"),
 			@ApiResponse(description = "user not authorized to login", responseCode = "401") })
+	
 	@PostMapping("/login")
 	public ResponseEntity<ResponseStructure<User>> login(@Valid @RequestParam String email,
 			@Valid @RequestParam String password, HttpServletRequest request) {
 		return userService.login(email, password, request);
 	}
 
+	
+	
+	@Operation(description = "loging out and session invalidate", summary = "logout user")
+	@ApiResponses(value = { @ApiResponse(description = "logout successfully", responseCode = "200"),
+			@ApiResponse(description = "Unauthorized", responseCode = "401", content = @Content) })
 	@PostMapping("/logout")
 	public ResponseEntity<String> logout(HttpServletRequest request, HttpServletResponse response) {
 
