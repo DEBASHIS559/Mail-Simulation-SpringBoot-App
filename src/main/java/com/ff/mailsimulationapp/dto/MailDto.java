@@ -10,6 +10,7 @@ import lombok.Data;
 
 @Data
 public class MailDto {
+	private int id;
 	
 	private String fromUser;
 	 
@@ -24,4 +25,7 @@ public class MailDto {
 	
 	@Enumerated(EnumType.STRING)
 	private MailStatus status;
+	
+	
+	private UserDto userDto;
 }

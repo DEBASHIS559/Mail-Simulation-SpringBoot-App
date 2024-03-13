@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ff.mailsimulationapp.dto.InboxResponse;
 import com.ff.mailsimulationapp.dto.MailDto;
 import com.ff.mailsimulationapp.dto.ResponseStructure;
 import com.ff.mailsimulationapp.entity.Mail;
@@ -39,7 +40,7 @@ public class MailController {
 	@Operation(description = "To view email" , summary = "mail will be fetched")
 	@ApiResponses(value = {@ApiResponse(description = "mail fetched successfully",responseCode ="202"),@ApiResponse(description = "mail not fetched",responseCode ="403")})
 	@GetMapping("/inbox/{email}")
-	public ResponseEntity<ResponseStructure<List<Mail>>> viewInbox(@PathVariable String email){
+	public ResponseEntity<ResponseStructure<List<InboxResponse>>> viewInbox(@PathVariable String email){
 		return mailService.viewInbox(email);
 	}
 	@Operation(description = "To delete an email" , summary = "mail will be deleted")
